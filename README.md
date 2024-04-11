@@ -10,4 +10,4 @@ Github repo URL: https://github.com/jennybsk/data1700oblig2.git
 
 Fullt navn: Jenny Birgitte Sommerstad Kjelland
 
-Kort beskrivelse av applikasjon: 
+Kort beskrivelse av applikasjon: testttststs
