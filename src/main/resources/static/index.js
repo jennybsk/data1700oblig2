@@ -65,8 +65,14 @@ function kjøpAvBillett() {
     }
 }
 
+function hentAlle() {
+    $.get("/hentAlle", function(kinobillettRegister) {
+        formaterData(kinobillettRegister);
+    });
+}
+
 // Skriver ut array med registrerte
-function visKinobillettRegister() {
+function visKinobillettRegister(kinobillettRegister) {
     let ut = "<table><tr>" +
         "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>" +
         "</tr>";
@@ -75,11 +81,13 @@ function visKinobillettRegister() {
         ut += "<td>" + r.film + "</td><td>" + r.antall + "</td><td>" + r.fornavn + "</td><td>" + r.etternavn + "</td><td>" + r.telefonnr + "</td><td>" + r.epost + "</td>";
         ut += "</tr>";
     }
-    document.getElementById("kinobillettRegister").innerHTML = ut;
+    ut += "</table>";
+    $("#kinobillettRegister").html(ut);
 }
 
 // Funksjon for å tømme arrayet for all registrert info
 function slettAlle() {
-    kinobillettRegister.length = 0;
-    visKinobillettRegister();
+    $.get("/slettAlle", function () {
+       hentAlle();
+    });
 }
