@@ -25,7 +25,7 @@ function regKinobillett() {
 }
 
     function formaterData(billetter) {
-    let ut = "<table><tr><th>Film</th><th>Antall</th><th>Fornavn</th>" +
+    let ut = "<table class='table table-striped'><tr><th>Film</th><th>Antall</th><th>Fornavn</th>" +
     "<th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
     for (const billett of billetter) {
     ut += "<tr><td>" + billett.filmer + "</td><td>" + billett.antall + "</td><td>" + billett.fornavn + "</td>" +
