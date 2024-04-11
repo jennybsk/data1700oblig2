@@ -1,41 +1,38 @@
-// Oppretter array for billettregister
-const kinobillettRegister=[];
-
 // Funksjon for kjøp av billett
 function kjøpAvBillett() {
     // Tømmer feilmeldingene før validering
-    document.getElementById("ugyldigAntall").innerHTML = "";
-    document.getElementById("ikkeNummer").innerHTML = "";
-    document.getElementById("ugyldigFornavn").innerHTML = "";
-    document.getElementById("ugyldigEtternavn").innerHTML = "";
-    document.getElementById("ugyldigEpost").innerHTML = "";
+    $("#ugyldigAntall").html("");
+    $("#ikkeNummer").html("");
+    $("#ugyldigFornavn").html("");
+    $("#ugyldigEtternavn").html("");
+    $("#ugyldigEpost").html("");
 
-    const film = document.getElementById("filmer").value;
-    const antall = document.getElementById("antall").value;
-    const fornavn = document.getElementById("fornavn").value;
-    const etternavn = document.getElementById("etternavn").value;
-    const telefonnr = document.getElementById("telefonnr").value;
-    const epost = document.getElementById("epost").value;
+    const film = $("#filmer").val();
+    const antall = $("#antall").val();
+    const fornavn = $("#fornavn").val();
+    const etternavn = $("#etternavn").val();
+    const telefonnr = $("#telefonnr").val();
+    const epost = $("#epost").val();
 
 
     if (antall === "" || isNaN(antall) || parseInt(antall) <= 0) {
-        document.getElementById("ugyldigAntall").innerHTML="Ugyldig, må fylle inn antall";
+        $("#ugyldigAntall").html("Ugyldig, må fylle inn antall");
     }
 
     if(isNaN(telefonnr) || telefonnr.length !== 8){
-        document.getElementById("ikkeNummer").innerHTML="Ugyldig, telefonnr må bestå av 8 siffer";
+        $("#ikkeNummer").html("Ugyldig, telefonnr må bestå av 8 siffer");
     }
 
     if (fornavn.length === 0 || !isNaN(fornavn)) {
-        document.getElementById("ugyldigFornavn").innerHTML="Ugyldig, må fylle inn fornavn";
+        $("#ugyldigFornavn").html("Ugyldig, må fylle inn fornavn");
     }
 
     if (etternavn.length === 0 || !isNaN(etternavn)) {
-        document.getElementById("ugyldigEtternavn").innerHTML="Ugyldig, må fylle inn etternavn";
+        $("#ugyldigEtternavn").html("Ugyldig, må fylle inn etternavn");
     }
 
     if (!epost.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost)) {
-        document.getElementById("ugyldigEpost").innerHTML ="Ugyldig e-postadresse";
+        $("#ugyldigEpost").html("Ugyldig e-postadresse");
     }
 
     else {
@@ -52,16 +49,15 @@ function kjøpAvBillett() {
         kinobillettRegister.push(registrert);
 
         // Viser den nye infoen i arrayet
-        visKinobillettRegister()
-
+        visKinobillettRegister();
 
         // Sletter info fra input-boksene
-        document.getElementById("filmer").value="";
-        document.getElementById("antall").value="";
-        document.getElementById("fornavn").value="";
-        document.getElementById("etternavn").value="";
-        document.getElementById("telefonnr").value="";
-        document.getElementById("epost").value="";
+        $("#filmer").val("");
+        $("#antall").val("");
+        $("#fornavn").val("");
+        $("#etternavn").val("");
+        $("#telefonnr").val("");
+        $("#epost").val("");
     }
 }
 
